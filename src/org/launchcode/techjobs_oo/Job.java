@@ -43,6 +43,30 @@ public class Job {
     @Override
     public int hashCode(){ return Objects.hash(getId());}
 
+    @Override
+    public String toString() {
+        String jobString = "";
+        jobString += "\n";
+        jobString += "ID: " + getId();
+        if (getName() == null) {
+            jobString += "\nName: Data not available";
+        } else { jobString += "\nName: " + getName();}
+        if (getEmployer() == null) {
+            jobString += "\nEmployer: Data not available";
+        } else { jobString += "\nEmployer: " + getEmployer(); }
+        if (getLocation() == null) {
+            jobString += "\nLocation: Data not available";
+        } else { jobString += "\nLocation: " + getLocation(); }
+        if (getPositionType() == null) {
+            jobString += "\nPosition Type: Data not available";
+        } else { jobString += "\nPosition Type: " + getPositionType();}
+        if (getCoreCompetency() == null) {
+            jobString += "\nCore Competency: Data not available";
+        } else { jobString += "\nCore Competency: " + getCoreCompetency(); }
+        jobString += "\n";
+        return jobString;
+    }
+
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 

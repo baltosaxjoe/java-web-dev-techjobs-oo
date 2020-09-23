@@ -11,23 +11,27 @@ import org.launchcode.techjobs_oo.*;
 
 public class JobTest {
 
-//    @Before
-//    public void createJob() {
-//       Job test_job = new Job();
-//       Job second_job = new Job();
-//    }
+    private Job test_job;
+    private Job second_job;
+    private Job full_job;
+
+
+    @Before
+    public void createJobs() {
+       test_job = new Job();
+       second_job = new Job();
+       full_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+    }
 
     @Test
     public void emptyJobConstructorTest() {
-        Job test_job = new Job();
-        Job second_job = new Job();
         assertEquals(1, test_job.getId(), .001);
         assertEquals(2, second_job.getId(), .001);
     }
 
     @Test
     public void testJobConstructorSetsAllFields() {
-        Job full_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals("Product tester", full_job.getName());
         assertTrue(full_job.getEmployer() instanceof Employer);
         assertEquals("ACME", full_job.getEmployer().toString());
@@ -41,8 +45,27 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        Job test_job = new Job();
-        Job second_job = new Job();
         assertFalse(test_job.equals(second_job));
+    }
+
+    @Test
+    public void testJobToStringBlankLines() {
+       assertEquals('\n', test_job.toString().charAt(0));
+       assertEquals('\n', test_job.toString().charAt(test_job.toString().length()-1));
+    }
+
+    @Test
+    public void testJobDisplayInfo() {
+        assertEquals(
+                "\nID: 3\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", full_job.toString()
+        );
+    }
+
+    @Test
+    public void testEmptyJobInfoDisplay() {
+        assertEquals(
+                "\nID: 1\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n", test_job.toString()
+
+        );
     }
 }
