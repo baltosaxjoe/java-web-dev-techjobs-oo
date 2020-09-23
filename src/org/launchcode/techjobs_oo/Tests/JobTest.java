@@ -14,12 +14,14 @@ public class JobTest {
     private Job test_job;
     private Job second_job;
     private Job full_job;
+    private Job partial_job;
 
 
     @Before
     public void createJobs() {
        test_job = new Job();
        second_job = new Job();
+       partial_job = new Job("Coder", null, null, null, null);
        full_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
     }
@@ -57,15 +59,19 @@ public class JobTest {
     @Test
     public void testJobDisplayInfo() {
         assertEquals(
-                "\nID: 3\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", full_job.toString()
+                "\nID: 4\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", full_job.toString()
         );
     }
 
     @Test
     public void testEmptyJobInfoDisplay() {
         assertEquals(
-                "\nID: 1\nName: Data not available\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n", test_job.toString()
-
+                "OOPS! This job does not seem to exist.", test_job.toString()
         );
+    }
+
+    @Test
+    public void testIndividualEmptyField() {
+        assertEquals("\nID: 3\nName: Coder\nEmployer: Data not available\nLocation: Data not available\nPosition Type: Data not available\nCore Competency: Data not available\n", partial_job.toString());
     }
 }

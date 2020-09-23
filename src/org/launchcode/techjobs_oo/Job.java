@@ -46,6 +46,9 @@ public class Job {
     @Override
     public String toString() {
         String jobString = "";
+        if (getName() == null && getEmployer() == null && getLocation() == null && getPositionType() == null && getCoreCompetency() == null){
+            return "OOPS! This job does not seem to exist.";
+        }
         jobString += "\n";
         jobString += "ID: " + getId();
         if (getName() == null) {
