@@ -47,7 +47,7 @@ public class Job {
     public String toString() {
         String jobString = "";
         if (getName() == null && getEmployer() == null && getLocation() == null && getPositionType() == null && getCoreCompetency() == null){
-            return "OOPS! This job does not seem to exist.";
+            return "\nOOPS! This job does not seem to exist.\n";
         }
         jobString += "\n";
         jobString += "ID: " + getId();

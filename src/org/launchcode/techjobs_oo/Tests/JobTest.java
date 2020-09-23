@@ -66,7 +66,7 @@ public class JobTest {
     @Test
     public void testEmptyJobInfoDisplay() {
         assertEquals(
-                "OOPS! This job does not seem to exist.", test_job.toString()
+                "\nOOPS! This job does not seem to exist.\n", test_job.toString()
         );
     }
 
